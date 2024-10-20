@@ -27,7 +27,7 @@ namespace ServerLibrary.Repositories.Implementations
             //Save user
             var applicationUser = await AddToDatabase(new ApplicationUser()
             {
-                FullName = user.FullName,
+                FullName = user.Fullname,
                 Email = user.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(user.Password)
             });
@@ -64,7 +64,7 @@ namespace ServerLibrary.Repositories.Implementations
 
             // Verify password
             if (!BCrypt.Net.BCrypt.Verify(user.Password, applicationUser.Password))
-                return new LoginResponse(false, "Email/Passwordnot valid");
+                return new LoginResponse(false, "Email/Password not valid");
 
             var getUserRole = await FindUserRole(applicationUser.Id);
             if (getUserRole is null) return new LoginResponse(false, "User role not found");
@@ -104,9 +104,10 @@ namespace ServerLibrary.Repositories.Implementations
                 issuer: config.Value.Issuer,
                 audience: config.Value.Audience,
                 claims: userClaims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddSeconds(2),
                 signingCredentials: credentials
                 );
+            Console.WriteLine("Token expiration time: " + token.ValidTo);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
         private async Task<UserRole> FindUserRole(int userId) => await appDbContext.UserRoles.FirstOrDefaultAsync(_ => _.UserId == userId);
@@ -127,7 +128,7 @@ namespace ServerLibrary.Repositories.Implementations
             if (token is null) return new LoginResponse(false, "Model is empty");
 
             var findToken = await appDbContext.RefreshTokenInfos.FirstOrDefaultAsync(_ => _.Token!.Equals(token.Token));
-            if (findToken is null) return new LoginResponse(false, "Refresh token is requiered");
+            if (findToken is null) return new LoginResponse(false, "Refresh token is required");
 
             // Get user details
             var user = await appDbContext.ApplicationUsers.FirstOrDefaultAsync(_ => _.Id == findToken.UserId);

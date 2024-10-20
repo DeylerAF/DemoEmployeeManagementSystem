@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// Ignore Spelling: Fullname
+
+using System.ComponentModel.DataAnnotations;
 
 namespace BaseLibrary.DTOs
 {
@@ -7,7 +9,7 @@ namespace BaseLibrary.DTOs
         [Required]
         [MinLength(3)]
         [MaxLength(100)]
-        public string? FullName { get; set; }
+        public string? Fullname { get; set; }
         [DataType(DataType.Password)]
         [Required]
         public string? ConfirmPassword { get; set; }
