@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Fullname
+﻿// Ignore Spelling: FullName
 
 using System.ComponentModel.DataAnnotations;
 
@@ -9,7 +9,7 @@ namespace BaseLibrary.DTOs
         [Required]
         [MinLength(3)]
         [MaxLength(100)]
-        public string? Fullname { get; set; }
+        public string? FullName { get; set; }
         [DataType(DataType.Password)]
         [Required]
         public string? ConfirmPassword { get; set; }
