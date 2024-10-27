@@ -17,15 +17,17 @@ services:
       retries: 10
       start_period: 10s
       timeout: 3s
+    volumes:
+      - ./mssql_data:/var/opt/mssql
 
   server:
+    depends_on:
+      - db
     image: server
     build:
       context: .
       dockerfile: Server/Dockerfile
     restart: unless-stopped
-    depends_on:
-      - db
     ports:
       - 5021:5021
       - 7099:7099
@@ -37,12 +39,17 @@ services:
     volumes:
       - ~/.aspnet/https:/https:ro
     
-  client_dev:
-    image: client_dev
+  client:
+    depends_on:
+      - server
+    image: client
     build:
       context: .
-      dockerfile: Client/Dockerfile.dev
-    restart: always
+      dockerfile: Client/Dockerfile
+    restart: unless-stopped
     ports:
       - 5141:80
       - 7102:443
+
+volumes:
+  mssql_data:
