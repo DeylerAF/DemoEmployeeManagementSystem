@@ -18,7 +18,7 @@ services:
       start_period: 10s
       timeout: 3s
     volumes:
-      - ./mssql_data:/var/opt/mssql
+      - mssql_data:/var/opt/mssql
 
   server:
     depends_on:
