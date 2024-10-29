@@ -1,3 +1,4 @@
+using BaseLibrary.Entities;
 using Blazored.LocalStorage;
 using Client;
 using Client.ApplicationStates;
@@ -26,6 +27,19 @@ builder.Services.AddScoped<GetHttpClient>();
 builder.Services.AddScoped<LocalStorageService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
+
+//General Department / Department / Branch
+builder.Services.AddScoped<IGenericServiceInterface<GeneralDepartment>, GenericServiceImplementation<GeneralDepartment>>();
+builder.Services.AddScoped<IGenericServiceInterface<Department>, GenericServiceImplementation<Department>>();
+builder.Services.AddScoped<IGenericServiceInterface<Branch>, GenericServiceImplementation<Branch>>();
+
+//Country / City / Town
+builder.Services.AddScoped<IGenericServiceInterface<Country>, GenericServiceImplementation<Country>>();
+builder.Services.AddScoped<IGenericServiceInterface<City>, GenericServiceImplementation<City>>();
+builder.Services.AddScoped<IGenericServiceInterface<Town>, GenericServiceImplementation<Town>>();
+
+//Employee
+builder.Services.AddScoped<IGenericServiceInterface<Employee>, GenericServiceImplementation<Employee>>();
 
 builder.Services.AddScoped<DepartmentState>();
 
