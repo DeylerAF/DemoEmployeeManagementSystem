@@ -1,4 +1,4 @@
-﻿using BaseLibrary.DTOs;
+using BaseLibrary.DTOs;
 
 namespace ClientLibrary.Helpers
 {

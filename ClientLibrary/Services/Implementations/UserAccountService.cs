@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Auth
+// Ignore Spelling: Auth
 
 using BaseLibrary.DTOs;
 using BaseLibrary.Responses;

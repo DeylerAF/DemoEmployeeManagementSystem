@@ -1,4 +1,4 @@
-﻿using BaseLibrary.Entities;
+using BaseLibrary.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerLibrary.Repositories.Contracts;

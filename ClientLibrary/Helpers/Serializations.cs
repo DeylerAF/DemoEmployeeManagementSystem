@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: json Deserialize
+// Ignore Spelling: json Deserialize
 
 using System.Text.Json;
 

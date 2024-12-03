@@ -1,8 +1,5 @@
 ﻿@page "/identity/account/login"
-@using Client.Pages.OtherPages
-@using Syncfusion.Blazor.Popups
 @layout AuthenticationLayout
-@inject SfDialogService DialogService
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
@@ -27,7 +24,7 @@
                             <input type="password" @bind="User.Password" class="form-control"></input>
                         </div>
                         <div class="form-group mt-1">
-                            @if (ShowLodingButton)
+                            @if (ShowLoadingButton)
                             {
                                 <ButtonLoadingSpinner></ButtonLoadingSpinner>
                             }
@@ -50,7 +47,7 @@
 </div>
 
 @code {
-    public bool ShowLodingButton { get; set; } = false;
+    public bool ShowLoadingButton { get; set; } = false;
     Login User = new();
 
     [CascadingParameter] public Task<AuthenticationState> AuthenticationState { get; set; }
@@ -61,14 +58,14 @@
 
     async Task HandleLogin()
     {
-        ShowLodingButton = true;
+        ShowLoadingButton = true;
         var result = await accountService.SignInAsync(User);
         if (result.Flag)
         {
             await DisplayDialog(result.Message, "Login Success");
             var customAuthStateProvider = (CustomAuthenticationStateProvider)AuthStateProvider;
-            await customAuthStateProvider.UpdateAuthenticationState(new UserSession() 
-            { Token = result.Token, RefreshToken = result.RefreshToken });
+            await customAuthStateProvider.UpdateAuthenticationState(new UserSession()
+                { Token = result.Token, RefreshToken = result.RefreshToken });
             NavManager.NavigateTo("/", forceLoad: true);
         }
         else
@@ -76,7 +73,7 @@
             await DisplayDialog(result.Message, "Alert");
         }
 
-        ShowLodingButton = false;
+        ShowLoadingButton = false;
     }
 
     private async Task DisplayDialog(string content, string title)

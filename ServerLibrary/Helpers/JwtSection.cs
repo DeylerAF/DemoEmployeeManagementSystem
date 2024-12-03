@@ -1,4 +1,4 @@
-﻿namespace ServerLibrary.Helpers
+namespace ServerLibrary.Helpers
 {
     public class JwtSection
     {

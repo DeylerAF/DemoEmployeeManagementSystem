@@ -1,4 +1,4 @@
-﻿using BaseLibrary.Entities;
+using BaseLibrary.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ServerLibrary.Data

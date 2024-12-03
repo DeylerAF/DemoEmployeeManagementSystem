@@ -1,4 +1,4 @@
-﻿using BaseLibrary.Entities;
+using BaseLibrary.Entities;
 using BaseLibrary.Responses;
 using Microsoft.EntityFrameworkCore;
 using ServerLibrary.Data;

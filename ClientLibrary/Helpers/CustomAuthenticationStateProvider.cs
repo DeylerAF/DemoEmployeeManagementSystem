@@ -1,4 +1,4 @@
-﻿using BaseLibrary.DTOs;
+using BaseLibrary.DTOs;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -40,7 +40,7 @@ namespace ClientLibrary.Helpers
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrinsipal)));
         }
 
-            public static ClaimsPrincipal SetClaimPrincipal(CustomUserClaims claims)
+        public static ClaimsPrincipal SetClaimPrincipal(CustomUserClaims claims)
         {
             if (claims.Email is null) return new ClaimsPrincipal();
             return new ClaimsPrincipal(new ClaimsIdentity(

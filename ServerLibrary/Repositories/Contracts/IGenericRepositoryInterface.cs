@@ -1,4 +1,4 @@
-﻿using BaseLibrary.Responses;
+using BaseLibrary.Responses;
 
 namespace ServerLibrary.Repositories.Contracts
 {

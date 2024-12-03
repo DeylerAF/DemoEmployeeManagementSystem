@@ -1,4 +1,4 @@
-﻿namespace ClientLibrary.Helpers;
+namespace ClientLibrary.Helpers;
 
 public static class Constants
 {

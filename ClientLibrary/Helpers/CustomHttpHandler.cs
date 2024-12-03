@@ -1,4 +1,4 @@
-﻿using BaseLibrary.DTOs;
+using BaseLibrary.DTOs;
 using ClientLibrary.Services.Contracts;
 using System.Net;
 

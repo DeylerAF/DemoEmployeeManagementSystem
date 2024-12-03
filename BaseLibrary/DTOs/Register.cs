@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: FullName
+// Ignore Spelling: FullName
 
 using System.ComponentModel.DataAnnotations;
 
